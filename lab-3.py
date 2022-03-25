@@ -25,11 +25,9 @@ def kickoff_subprocess(cmd, log_file_name):
 
 def upload_output_to_S3(log_file_name):
     f = open(log_file_name, "rb")
+    with  open(log_file_name, "rb") as f:
     s3.upload_fileobj(f, "arn:aws:s3:::python-reviewer", log_file_name)
-     try:
-        yield f
-    finally:
-       f.close(log_file_name)
+        f.close(log_file_name)
     
 
 if __name__ == "__main__":
