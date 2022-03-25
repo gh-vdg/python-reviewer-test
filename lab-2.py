@@ -22,8 +22,9 @@ def perform_division(a,b):
     try:
         config.operations_count += 1
         return int(a)/int(b)
-    except Exception as e:
-        pass
-
+#    except Exception as e:
+#        pass
+except ZeroDivisionError as e:
+    logging.exception('ZeroDivisionError: %s', e)
 
 main()
